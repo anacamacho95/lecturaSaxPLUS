@@ -13,7 +13,7 @@
             </proyecto>
         </proyectos>
     </trabajador>
-    <trabajador empresa="Decathlon" lugar="Sevilla">
+    <trabajador empresa="Decathlon" lugar1="Sevilla">
         <nombre>Ana</nombre>
         <edad>28</edad>
     </trabajador>
@@ -26,12 +26,12 @@
         <alias>Antonio</alias>
     </becario>
     <becario>
-        <ies lugar="sevilla">Machado</ies>
+        <ies lugar2="sevilla">Machado</ies>
         <alias>Manuel</alias>
         <apellido>Casado</apellido>
     </becario>
     <becario funcion="teleoperador">
-        <ies lugar="sevilla">Machado</ies>
+        <ies lugar2="sevilla">Machado</ies>
         <alias>Andrés</alias>
         <apellido>Casado</apellido>
     </becario>

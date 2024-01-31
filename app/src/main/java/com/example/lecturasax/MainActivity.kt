@@ -30,8 +30,11 @@ class MainActivity : AppCompatActivity() {
         Log.d("SimpleXML", "probando procesado con Simple XML Framework")
 
         //tambien podemos trabajar con la lista de trabajadores del DAO desde el MAIN
-        daoAssets.trabajadores.forEach(){
+        daoAssets.trabajadoresTr.forEach(){
             Log.d("trabajadores", "NoM: ${it.nombre}")
+        }
+        daoAssets.trabajadoresBec.forEach(){
+            Log.d("trabajadoresBecarios", "NoM: ${it.toString()}")
         }
 
         //copio assets y lo pego en el archivo interno
@@ -41,6 +44,15 @@ class MainActivity : AppCompatActivity() {
         //xml con trabajadores nuevos
         val trabajador=Trabajador("Pablo")
         daoAssets.addTrabajador(trabajador)
+        daoAssets.trabajadoresTr.forEach(){
+            Log.d("trabPablo", "NoM: ${it.nombre}")
+        }
+        //xml con becarios nuevos
+        val becario=Becario("Verne","Paula")
+        daoAssets.addBecario(becario)
+        daoAssets.trabajadoresBec.forEach(){
+            Log.d("becPaula", "NoM: ${it.toString()}")
+        }
 
         daoAssets.ProcesarArchivoXMLInterno()
 

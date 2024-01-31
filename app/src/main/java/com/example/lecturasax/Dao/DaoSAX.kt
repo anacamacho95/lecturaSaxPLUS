@@ -31,7 +31,7 @@ class DaoSAX(private val context: Context) {
             }
             handler.trabajadoresBec.forEach {
                 // Imprime información sobre cada becario en el archivo XML
-                Log.d("XMLSAX", "Becario: ${it.alias} Funcion:${it.funcion} Lugar:${it.lugar}")
+                Log.d("XMLSAX", "Becario: ${it.alias} Funcion:${it.funcion} Lugar:${it.lugar2}")
             }
 
             //edad media de trabajadores

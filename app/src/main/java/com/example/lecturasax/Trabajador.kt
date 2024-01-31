@@ -27,8 +27,8 @@ data class Trabajador(
     @field:Attribute(name = "empresa", required = false)
     var empresa: String? = null,
 
-    @field:Attribute(name = "lugar", required = false)
-    var lugar: String? = null,
+    @field:Attribute(name = "lugar1", required = false)
+    var lugar1: String? = null,
 
 )
 {
@@ -66,18 +66,18 @@ data class Becario(
     var ies: String = "",
     @field:Element(name = "alias")
     var alias: String = "",
-    @field:Element(name = "apellido")
+    @field:Element(name = "apellido", required = false)
     var apellido: String? = "",
 
 
     @field:Attribute(name = "funcion", required = false)
     var funcion: String? = null,
-    @field:Attribute(name = "lugar", required = false)
-    var lugar: String? = null,
+    @field:Attribute(name = "lugar2", required = false)
+    var lugar2: String? = null,
 
     )
 {
     override fun toString():String{
-        return "IES:$ies Nombre:$alias Funcion:$funcion Lugar:$lugar"
+        return "IES:$ies Nombre:$alias Funcion:$funcion Lugar:$lugar2"
     }
 }

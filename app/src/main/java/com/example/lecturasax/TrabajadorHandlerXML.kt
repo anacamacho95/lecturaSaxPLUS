@@ -30,7 +30,7 @@ class TrabajadorHandlerXML : DefaultHandler() {
         if (nombre == "trabajador") {
             trabajador = Trabajador()
             trabajador?.empresa = attributes.getValue("empresa")
-            trabajador?.lugar = attributes.getValue("lugar")
+            trabajador?.lugar1 = attributes.getValue("lugar1")
         }
         Log.d("SAX", "abriendo etiqueta trabajador")
 
@@ -51,7 +51,7 @@ class TrabajadorHandlerXML : DefaultHandler() {
         Log.d("SAX", "abriendo etiqueta becario")
 
         if(nombre=="ies"){
-            becario?.lugar=attributes.getValue("lugar")
+            becario?.lugar2=attributes.getValue("lugar2")
         }
         Log.d("SAX", "abriendo etiqueta lugar")
 

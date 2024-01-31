@@ -1,16 +1,17 @@
 package com.example.lecturasax.Dao
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lecturasax.Becario
 import com.example.lecturasax.Trabajador
 import com.example.lecturasax.Trabajadores
 import org.simpleframework.xml.core.Persister
 import java.io.*
 
-class DaoAssets (private val context: Context){
-    var trabajadores= mutableListOf<Trabajador>() //importante INICIALIZAR VARIABLE
+class DaoAssets (private val context: Context) {
+    var trabajadoresTr = mutableListOf<Trabajador>() //importante INICIALIZAR VARIABLE
+    var trabajadoresBec = mutableListOf<Becario>()
 
     fun procesarArchivoAssetsXML() {
         val serializer = Persister()
@@ -21,10 +22,13 @@ class DaoAssets (private val context: Context){
             inputStream = context.assets.open("trabajadores.xml")//importante pasar el context
             reader = InputStreamReader(inputStream)
             val trabajadoresListType = serializer.read(Trabajadores::class.java, reader, false)
-            trabajadores.addAll(trabajadoresListType.trabajador)
-            trabajadores.forEach(){
-                Log.d("assetsXML", "NOMBRE: ${it.nombre}  EDAD: ${it.edad}")
-            }
+            trabajadoresTr.addAll(trabajadoresListType.trabajador)
+            Log.d("assetsXMLtra", trabajadoresTr.toString())
+
+            trabajadoresBec.addAll(trabajadoresListType.becario)
+            Log.d("assetsXMLbec", trabajadoresBec.toString())
+
+
         } catch (e: Exception) {
             // Manejo de errores
             e.printStackTrace()
@@ -39,10 +43,14 @@ class DaoAssets (private val context: Context){
         }
     }
 
+
     fun copiarArchivoDesdeAssets() {
         val nombreArchivo = "trabajadores.xml"
         val archivoEnAssets = context.assets.open(nombreArchivo)
-        val archivoInterno = context.openFileOutput(nombreArchivo,AppCompatActivity.MODE_PRIVATE)//tener en cuenta el context y AppCompatActivity
+        val archivoInterno = context.openFileOutput(
+            nombreArchivo,
+            AppCompatActivity.MODE_PRIVATE
+        )//tener en cuenta el context y AppCompatActivity
 
         archivoEnAssets.copyTo(archivoInterno)
         archivoEnAssets.close()
@@ -53,10 +61,28 @@ class DaoAssets (private val context: Context){
     fun addTrabajador(trabajador: Trabajador) {
         try {
             val serializer = Persister()
-            trabajadores.add(trabajador)
-            val trabajadoresList = Trabajadores(trabajadores)
-            val outputStream = context.openFileOutput("trabajadores.xml", AppCompatActivity.MODE_PRIVATE)//***Añadir context
+            trabajadoresTr.add(trabajador)
+            val trabajadoresList = Trabajadores(trabajadoresTr)
+            val outputStream = context.openFileOutput(
+                "trabajadores.xml",
+                AppCompatActivity.MODE_PRIVATE
+            )//***Añadir context
             serializer.write(trabajadoresList, outputStream)
+            outputStream.close() // Asegúrate de cerrar el outputStream después de escribir
+        } catch (e: Exception) {
+            e.printStackTrace() // Manejo de errores adecuado
+        }
+    }
+    fun addBecario(becario: Becario) {
+        try {
+            val serializer = Persister()
+            trabajadoresBec.add(becario)
+            val becariosList = Trabajadores(trabajadoresTr,trabajadoresBec)
+            val outputStream = context.openFileOutput(
+                "trabajadores.xml",
+                AppCompatActivity.MODE_PRIVATE
+            )//***Añadir context
+            serializer.write(becariosList, outputStream)
             outputStream.close() // Asegúrate de cerrar el outputStream después de escribir
         } catch (e: Exception) {
             e.printStackTrace() // Manejo de errores adecuado
@@ -72,10 +98,15 @@ class DaoAssets (private val context: Context){
             val file = File(context.filesDir, nombreArchivo)//***IMP context
             val inputStream = FileInputStream(file)
             val trabajadoresList = serializer.read(Trabajadores::class.java, inputStream)
-            trabajadores.clear() //evitar duplicar datos, limpiamos lista de trabajadores, no el archivo interno
-            trabajadores.addAll(trabajadoresList.trabajador)
-            trabajadores.forEach(){
-                Log.d("assetsXML-interno", "NOMBREIN: ${it.nombre}  EDADIN: ${it.edad}")
+            trabajadoresTr.clear() //evitar duplicar datos, limpiamos lista de trabajadores, no el archivo interno
+            trabajadoresBec.clear()
+            trabajadoresTr.addAll(trabajadoresList.trabajador)
+            trabajadoresTr.forEach(){
+                Log.d("assetsXML-interno", it.toString())
+            }
+            trabajadoresBec.addAll(trabajadoresList.becario)
+            trabajadoresBec.forEach(){
+                Log.d("assetsXML-interno", it.toString())
             }
             inputStream.close()
 
