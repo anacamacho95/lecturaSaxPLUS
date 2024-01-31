@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb2ff2a2-07b6-4f6e-b216-75e4c3e6deb9" name="Changes" comment="" />
+    <list default="true" id="bb2ff2a2-07b6-4f6e-b216-75e4c3e6deb9" name="Changes" comment="Leyendo dos listas(trabaj y bec) con SAX" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706643740295</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Leyendo dos listas(trabaj y bec) con SAX">
+      <created>1706729670719</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706729670719</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,6 +164,7 @@
     <MESSAGE value="Sax con DAO" />
     <MESSAGE value="Sax con DAO + media edad trabajadores" />
     <MESSAGE value="Sax con DAO + media edad trabajadores + archivo interno + Pablo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sax con DAO + media edad trabajadores + archivo interno + Pablo" />
+    <MESSAGE value="Leyendo dos listas(trabaj y bec) con SAX" />
+    <option name="LAST_COMMIT_MESSAGE" value="Leyendo dos listas(trabaj y bec) con SAX" />
   </component>
 </project>
