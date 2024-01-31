@@ -1,0 +1,31 @@
+<trabajadores>
+    <trabajador empresa="JulioVerne">
+        <nombre>Enrique</nombre>
+        <edad>50</edad>
+    </trabajador>
+    <trabajador empresa="Decathlon" lugar="Sevilla">
+        <nombre>Ana</nombre>
+        <edad>28</edad>
+    </trabajador>
+    <trabajador>
+        <nombre>Julian</nombre>
+        <edad>21</edad>
+    </trabajador>
+    <becario funcion="limpieza">
+        <ies>JulioVerne</ies>
+        <alias>Antonio</alias>
+        <edad>22</edad>
+    </becario>
+    <becario>
+        <ies lugar="sevilla">Machado</ies>
+        <alias>Manuel</alias>
+        <apellido>Casado</apellido>
+        <edad>23</edad>
+    </becario>
+    <becario funcion="teleoperador">
+        <ies lugar="sevilla">Machado</ies>
+        <alias>Manuel</alias>
+        <apellido>Casado</apellido>
+        <edad>23</edad>
+    </becario>
+</trabajadores>
