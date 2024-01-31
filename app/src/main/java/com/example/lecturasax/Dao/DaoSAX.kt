@@ -27,7 +27,7 @@ class DaoSAX(private val context: Context) {
             // Accede a la lista de trabajadores desde el handler (RutaHandler)
             handler.trabajadoresTr.forEach {
                 // Imprime información sobre cada trabajador en el archivo XML
-                Log.d("XMLSAX", "Trabajador: ${it.nombre} Edad: ${it.edad}")
+                Log.d("XMLSAX", it.toString())
             }
             handler.trabajadoresBec.forEach {
                 // Imprime información sobre cada becario en el archivo XML

@@ -21,6 +21,8 @@ data class Trabajador(
 
     @field:Element(name = "edad")
     var edad: Int = 0,
+    @field:Element(name = "proyectos", required = false)
+    var proyectos: Proyectos? = null,
 
     @field:Attribute(name = "empresa", required = false)
     var empresa: String? = null,
@@ -30,10 +32,34 @@ data class Trabajador(
 
 )
 {
-    override fun toString():String{
-        return "Nombre:$nombre Edad:$edad Empresa:$empresa"
+    override fun toString():String{ //no se usa, estamos recurriendo al Log.d
+        return "Nombre:$nombre Edad:$edad Empresa:$empresa NºProyectos:${proyectos.toString()}"
     }
 }
+@Root(name = "proyectos")
+data class Proyectos(
+    @field:ElementList(inline = true, entry = "proyecto")
+    var proyecto: List<Proyecto> = mutableListOf()
+)
+{
+    override fun toString(): String {
+        return proyecto.toString()
+    }
+}
+
+@Root(name = "proyecto")
+data class Proyecto(
+    @field:Element(name = "nomPro")
+    var nomPro: String = "",
+
+    @field:Element(name = "fecha")
+    var fecha: Int = 0,
+){
+    override fun toString(): String {
+        return "NomPro:$nomPro Fecha:$fecha"
+    }
+}
+
 @Root(name = "becario")
 data class Becario(
     @field:Element(name = "ies")

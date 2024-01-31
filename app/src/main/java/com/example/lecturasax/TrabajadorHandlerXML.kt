@@ -9,8 +9,10 @@ class TrabajadorHandlerXML : DefaultHandler() {
     private val cadena = StringBuilder()
     private var trabajador: Trabajador? = null
     private var becario: Becario? = null
+    private var proyecto: Proyecto?= null
     var trabajadoresTr: MutableList<Trabajador> = mutableListOf()
     var trabajadoresBec: MutableList<Becario> = mutableListOf()
+    var proyectos: MutableList<Proyecto> = mutableListOf()
 
 
     @Throws(SAXException::class)
@@ -18,6 +20,7 @@ class TrabajadorHandlerXML : DefaultHandler() {
         cadena.clear()
         trabajadoresTr = mutableListOf()
         trabajadoresBec = mutableListOf()
+       // proyectos = mutableListOf()
         Log.d("SAX", "abriendo el documento")
     }
 
@@ -30,6 +33,16 @@ class TrabajadorHandlerXML : DefaultHandler() {
             trabajador?.lugar = attributes.getValue("lugar")
         }
         Log.d("SAX", "abriendo etiqueta trabajador")
+
+        if (nombre=="proyectos"){
+            proyectos= mutableListOf()
+        }
+        Log.d("SAX", "abriendo etiqueta proyectos")
+
+        if (nombre=="proyecto"){
+            proyecto= Proyecto()
+        }
+        Log.d("SAX", "abriendo etiqueta proyecto")
 
         if (nombre=="becario"){
             becario= Becario()
@@ -55,6 +68,10 @@ class TrabajadorHandlerXML : DefaultHandler() {
         when (nombre) {
             "nombre" -> trabajador?.nombre = cadena.toString()
             "edad" -> trabajador?.edad = cadena.toString().toInt()
+            "nomPro" -> proyecto?.nomPro = cadena.toString()
+            "fecha" -> proyecto?.fecha = cadena.toString().toInt()
+            "proyecto" -> proyectos.add(proyecto!!)
+            "proyectos" -> trabajador?.proyectos=Proyectos(proyectos)
             "trabajador" -> trabajador?.let { trabajadoresTr.add(it) }
             "ies" -> becario?.ies=cadena.toString()
             "alias" -> becario?.alias=cadena.toString()
